@@ -315,3 +315,4 @@ EMAIL_HOST_PASSWORD = 'xxx'
 EMAIL_USE_TLS = True
 # 发件人的邮箱
 EMAIL_FROM = 'xxx@163.com'
+EMAIL_BACKENDS = 'djano_smtp_ssl.SSLEmailBackend'
