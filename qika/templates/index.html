@@ -1,0 +1,218 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}首页{% endblock %}
+{% block content %}
+    <nav class="pageBdWrapNav bg-light"  aria-label="breadcrumb">
+        <div class="container">
+            <div class="row align-items-md-center">
+                <div class="col-12 col-md-7">
+                    <!-- breadcrumb -->
+                    <ol class="breadcrumb pageBreadcrumb m-0 p-0 text-capitalize">
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'index' %}">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">主页</li>
+                    </ol>
+                </div>
+                <div class="col-12 col-md-5 d-none d-md-flex align-items-md-center justify-content-md-end">
+                    <!-- title -->
+                    <strong class="title d-block text-right fontRoboto fwMedium text-capitalize text-dark">主页</strong>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-interval="2000">
+                    <img src="{% static 'images/wallpaper1.jpg' %}" alt="...">
+                </div>
+                <div class="carousel-item" data-interval="2000">
+                    <img src="{% static 'images/wallpaper2.png' %}" alt="...">
+                </div>
+            </div>
+        </div>
+        <section class="contentBlock prejectsListingBlock">
+				<div class="container">
+					<!-- filterRowWrap -->
+					<div class="row align-items-md-end filterRowWrap wow fadeInUp" data-wow-delay="0.1s">
+						<div class="col-12 col-md-4">
+							<!-- headingHead -->
+							<header class="headingHead">
+								<!-- blockH -->
+								<h2 class="text-uppercase blockH font-weight-bold mb-0">
+									<!-- hTitle -->
+									<strong class="font-weight-normal hTitle d-block fontBase">Anime</strong>
+									<span class="d-block">更新</span>
+								</h2>
+							</header>
+						</div>
+						<div class="col-12 col-md-8">
+							<!-- filterList -->
+							<ul class="list-unstyled filterList d-md-flex justify-content-md-end position-relative isoFiltersList text-capitalize">
+								<li id="Mon"><a href="javascript:void(0);" data-filter=".Mon" id="one">周一</a></li>
+								<li id="Tues"><a href="javascript:void(0);" data-filter=".Tues" id="two">周二</a></li>
+								<li id="Wed"><a href="javascript:void(0);" data-filter=".Wed" id="three">周三</a></li>
+								<li id="Thurs"><a href="javascript:void(0);" data-filter=".Thurs" id="four">周四</a></li>
+								<li id="Fri"><a href="javascript:void(0);" data-filter=".Fri" id="five">周五</a></li>
+								<li id="Sat"><a href="javascript:void(0);" data-filter=".Sat" id="six">周六</a></li>
+								<li id="Sun"><a href="javascript:void(0);" data-filter=".Sun" id="seven">周日</a></li>
+							</ul>
+						</div>
+					</div>
+					<!-- isoContentHolder -->
+					<div class="isoContentHolder row">
+						<div class="row justify-content-center wow fadeInUp" data-wow-delay="0.1s">
+                            {% for i in Mon %}
+                                <div class="col-12 col-md-6 col-lg-4 isoCol Mon">
+                                    <article class="prPostColumn hasOver position-relative">
+                                        <span class="bgCover prColumnBgCover d-block" style="background-image: url({{ i.anime_image_small.url }});">
+                                            <img class="sr-only" src="{{ i.anime_image_small.url }}" alt="{{ i.anime_name }}">
+                                        </span>
+                                        <div class="prPostCaption bg-white rounded">
+										<h3>
+											<strong class="font-weight-normal hTitle d-block fontBase">{{ i.anime_time_week }}</strong>
+											<span class="d-block"><a href="{% url 'anime:anime_detail' i.id %}">{{ i.anime_name }}</a></span>
+										</h3>
+									</div>
+                                    </article>
+                                </div>
+                            {% endfor %}
+                            {% for i in Tues %}
+                                <div class="col-12 col-md-6 col-lg-4 isoCol Tues">
+                                    <article class="prPostColumn hasOver position-relative">
+                                        <span class="bgCover prColumnBgCover d-block" style="background-image: url({{ i.anime_image_small.url }});">
+                                            <img class="sr-only" src="{{ i.anime_image_small.url }}" alt="{{ i.anime_name }}">
+                                        </span>
+                                        <div class="prPostCaption bg-white rounded">
+										<h3>
+											<strong class="font-weight-normal hTitle d-block fontBase">{{ i.anime_time_week }}</strong>
+											<span class="d-block"><a href="{% url 'anime:anime_detail' i.id %}">{{ i.anime_name }}</a></span>
+										</h3>
+									</div>
+                                    </article>
+                                </div>
+                            {% endfor %}
+                            {% for i in Wed %}
+                                <div class="col-12 col-md-6 col-lg-4 isoCol Wed">
+                                    <article class="prPostColumn hasOver position-relative">
+                                        <span class="bgCover prColumnBgCover d-block" style="background-image: url({{ i.anime_image_small.url }});">
+                                            <img class="sr-only" src="{{ i.anime_image_small.url }}" alt="{{ i.anime_name }}">
+                                        </span>
+                                        <div class="prPostCaption bg-white rounded">
+										<h3>
+											<strong class="font-weight-normal hTitle d-block fontBase">{{ i.anime_time_week }}</strong>
+											<span class="d-block"><a href="{% url 'anime:anime_detail' i.id %}">{{ i.anime_name }}</a></span>
+										</h3>
+									</div>
+                                    </article>
+                                </div>
+                            {% endfor %}
+                            {% for i in Thurs %}
+                                <div class="col-12 col-md-6 col-lg-4 isoCol Thurs">
+                                    <article class="prPostColumn hasOver position-relative">
+                                        <span class="bgCover prColumnBgCover d-block" style="background-image: url({{ i.anime_image_small.url }});">
+                                            <img class="sr-only" src="{{ i.anime_image_small.url }}" alt="{{ i.anime_name }}">
+                                        </span>
+                                        <div class="prPostCaption bg-white rounded">
+										<h3>
+											<strong class="font-weight-normal hTitle d-block fontBase">{{ i.anime_time_week }}</strong>
+											<span class="d-block"><a href="{% url 'anime:anime_detail' i.id %}">{{ i.anime_name }}</a></span>
+										</h3>
+									</div>
+                                    </article>
+                                </div>
+                            {% endfor %}
+                            {% for i in Fri %}
+                                <div class="col-12 col-md-6 col-lg-4 isoCol Fri">
+                                    <article class="prPostColumn hasOver position-relative">
+                                        <span class="bgCover prColumnBgCover d-block" style="background-image: url({{ i.anime_image_small.url }});">
+                                            <img class="sr-only" src="{{ i.anime_image_small.url }}" alt="{{ i.anime_name }}">
+                                        </span>
+                                        <div class="prPostCaption bg-white rounded">
+										<h3>
+											<strong class="font-weight-normal hTitle d-block fontBase">{{ i.anime_time_week }}</strong>
+											<span class="d-block"><a href="{% url 'anime:anime_detail' i.id %}">{{ i.anime_name }}</a></span>
+										</h3>
+									</div>
+                                    </article>
+                                </div>
+                            {% endfor %}
+                            {% for i in Sat %}
+                                <div class="col-12 col-md-6 col-lg-4 isoCol Sat">
+                                    <article class="prPostColumn hasOver position-relative">
+                                        <span class="bgCover prColumnBgCover d-block" style="background-image: url({{ i.anime_image_small.url }});">
+                                            <img class="sr-only" src="{{ i.anime_image_small.url }}" alt="{{ i.anime_name }}">
+                                        </span>
+                                        <div class="prPostCaption bg-white rounded">
+										<h3>
+											<strong class="font-weight-normal hTitle d-block fontBase">{{ i.anime_time_week }}</strong>
+											<span class="d-block"><a href="{% url 'anime:anime_detail' i.id %}">{{ i.anime_name }}</a></span>
+										</h3>
+									</div>
+                                    </article>
+                                </div>
+                            {% endfor %}
+                            {% for i in Sun %}
+                                <div class="col-12 col-md-6 col-lg-4 isoCol Sun">
+                                    <article class="prPostColumn hasOver position-relative">
+                                        <span class="bgCover prColumnBgCover d-block" style="background-image: url({{ i.anime_image_small.url }});">
+                                            <img class="sr-only" src="{{ i.anime_image_small.url }}" alt="{{ i.anime_name }}">
+                                        </span>
+                                        <div class="prPostCaption bg-white rounded">
+										<h3>
+											<strong class="font-weight-normal hTitle d-block fontBase">{{ i.anime_time_week }}</strong>
+											<span class="d-block"><a href="{% url 'anime:anime_detail' i.id %}">{{ i.anime_name }}</a></span>
+										</h3>
+									</div>
+                                    </article>
+                                </div>
+                            {% endfor %}
+						</div>
+					</div>
+				</div>
+			</section>
+    </div>
+{% endblock %}
+{% block load_js %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var week = new Date();
+            switch (week.getDay()){
+                case 1:
+                    $("#Mon").addClass('active');
+                    $('#one').click();
+                    break;
+                case 2:
+                    $("#Tues").addClass('active');
+                    $('#two').click();
+                    break;
+                case 3:
+                    $("#Wed").addClass('active');
+                    $('#three').click();
+                    break;
+                case 4:
+                    $("#Thurs").addClass('active');
+                    $('#four').click();
+                    break;
+                case 5:
+                    $("#Fri").addClass('active');
+                    $('#five').click();
+                    break;
+                case 6:
+                    $("#Sat").addClass('active');
+                    $('#six').click();
+                    break;
+                case 0:
+                    $("#Sun").addClass('active');
+                    $('#seven').click();
+                    break;
+            }
+        });
+    </script>
+{% endblock %}

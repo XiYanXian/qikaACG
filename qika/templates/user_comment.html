@@ -1,0 +1,50 @@
+{% extends 'user_base.html' %}
+{% load staticfiles %}
+{% block uc_content %}
+<div class="commentsWrap">
+<h2 class="text-capitalize">我的评论</h2>
+    <hr class="d-block">
+    {% if contacts %}
+        <!-- bpCommentsList -->
+    <ul class="list-unstyled bpCommentsList">
+        {% for i in contacts.object_list %}
+        <li>
+            <!-- cmntWrap -->
+            <hr class="d-block">
+
+            <div class="clearfix cmntWrap">
+                <!-- avatar holder -->
+                <div class="alignleft avatar-holder rounded-circle">
+                    <img class="rounded-circle" src="{{ i.user.icon.url }}" alt="image description">
+                </div>
+                <!-- descrWrap -->
+                <div class="descrWrap">
+                    <h3 class="text-capitalize"><a href="javascript:void(0);">{{ i.user.nickname }}</a> 评论了 <a href="{% url 'anime:anime_detail' i.anime.id %}">{{ i.anime.anime_name }}</a></h3>
+                    <time datetime="2011-01-12" class="d-block">{{ i.comment_time }}</time>
+                    <p>{{ i.content }}</p>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<hr class="d-block">
+<div class="container">
+    <nav aria-label="Page navigation">
+        <ul class="pagination pagePagination">
+        {% if contacts.has_previous %}
+            <li class="page-link"><a href="?page={{ contacts.previous_page_number }}">上一页</a></li>
+        {% endif %}
+        {% for i in all_pages %}
+            <li class="page-item"><a class="page-link" href="?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
+        {% endfor %}
+        {% if contacts.has_next %}
+            <a  class="page-link" href="?page={{ contacts.next_page_number }}">下一页</a>
+        {% endif %}
+        </ul>
+    </nav>
+</div>
+{% else %}
+    <h3>你还没有评论哦</h3>
+{% endif %}
+{% endblock %}

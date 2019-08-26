@@ -1,0 +1,285 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}标签{% endblock %}
+{% block content %}
+<!-- pageBdWrapNav -->
+    <nav class="pageBdWrapNav bg-light"  aria-label="breadcrumb">
+        <div class="container">
+            <div class="row align-items-md-center">
+                <div class="col-12 col-md-7">
+                    <!-- breadcrumb -->
+                    <ol class="breadcrumb pageBreadcrumb m-0 p-0 text-capitalize">
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'index' %}">
+                                Home
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">番剧详情</li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ anime.anime_name }}</li>
+                    </ol>
+                </div>
+                <div class="col-12 col-md-5 d-none d-md-flex align-items-md-center justify-content-md-end">
+                    <!-- title -->
+                    <strong class="title d-block text-right fontRoboto fwMedium text-capitalize text-dark">番剧详情/{{ anime.anime_name }}</strong>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="contentAreaWrap contentBlock">
+        <div class="container">
+            <!-- bCenterImage -->
+            <div class="aligncenter bCenterImage">
+                <img class="d-block w-100" src="{{ anime.anime_image.url }}" alt="{{ anime.anime_name }}">
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-7 mb-3 mb-md-0">
+                    <h3 class="position-relative">番剧简介</h3>
+                    <p>{{ anime.anime_intro|safe }}</p>
+                </div>
+                <div class="col-12 col-md-5 offset-xl-1 col-xl-4">
+                    <h3 class="text-capitalize position-relative mb-0">番剧相关</h3>
+                    <!-- pdDescrTable -->
+                    <table class="table pdDescrTable">
+                        <!-- tbody -->
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <!-- tdWrap -->
+                                    <div class="tdWrap">
+                                        番剧季度:
+                                    </div>
+                                </td>
+                                <td>
+                                    <!-- tdWrap -->
+                                    <div class="tdWrap">
+                                        {{ release_date }}
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <!-- tdWrap -->
+                                    <div class="tdWrap">
+                                        动画制作:
+                                    </div>
+                                </td>
+                                <td>
+                                    <!-- tdWrap -->
+                                    <div class="tdWrap">
+                                        {{ staff }}
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <!-- tdWrap -->
+                                    <div class="tdWrap">
+                                        动画监督:
+                                    </div>
+                                </td>
+                                <td>
+                                    <!-- tdWrap -->
+                                    <div class="tdWrap">
+                                        {{ supervision }}
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <!-- tdWrap -->
+                                    <div class="tdWrap">
+                                        音乐制作:
+                                    </div>
+                                </td>
+                                <td>
+                                    <!-- tdWrap -->
+                                    <div class="tdWrap">
+                                        {{ musician }}
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <!-- tdWrap -->
+                                    <div class="tdWrap">
+                                        播放网站:
+                                    </div>
+                                </td>
+                                <td>
+                                    <!-- tdWrap -->
+                                    <div class="tdWrap">
+                                        {{ anime.website|safe }}
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="row">
+        <!-- content -->
+        <div class="container">
+            <article id="content" class="mb-5">
+                <!-- btHHead -->
+                <header class="btHHead">
+                    <div class="row">
+                        <div class="col-12 col-md-5">
+                            <h1>{{ anime.anime_name }}</h1>
+                        </div>
+                        <div class="col-12 col-md-7">
+                            <!-- statusesList -->
+                            <ul class="list-unstyled statusesList d-flex justify-content-end align-items-center mb-0">
+                                <li>
+                                    <a href="javascript:void(0);">
+                                        <i class="zi zi_comment"><span class="sr-only">icon</span></i>
+                                        <span id="n_comment">{{ commet_num }}</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);">
+                                        <i class="zi zi_eye"><span class="sr-only">icon</span></i>
+                                        <span>{{ anime_point }}</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" aria-hidden="true" id="anime_like">
+                                        <i class="zi zi_love"><span class="sr-only">icon</span></i>
+                                        <span id="n_collection">{{ anime.n_collection }}</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </header>
+                <hr class="d-block">
+                <div class="commentsWrap">
+                    <h2 class="text-capitalize">评论区</h2>
+                    <!-- bpCommentsList -->
+                    <ul class="list-unstyled bpCommentsList">
+                        {% for i in contacts.object_list %}
+                        <li>
+                            <!-- cmntWrap -->
+                            <hr class="d-block">
+
+                            <div class="clearfix cmntWrap">
+                                <!-- avatar holder -->
+                                <div class="alignleft avatar-holder rounded-circle">
+                                    <img class="rounded-circle" src="{{ i.user.icon.url }}" alt="image description">
+
+                                </div>
+                                <!-- descrWrap -->
+                                <div class="descrWrap">
+                                    <h3 class="text-capitalize"><a href="javascript:void(0);">{{ i.user.nickname }}</a></h3>
+                                    <time datetime="2011-01-12" class="d-block">{{ i.comment_time }}</time>
+                                    <p>{{ i.content }}</p>
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <hr class="d-block">
+                <div class="container">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination pagePagination">
+                        {% if contacts.has_previous %}
+                            <li class="page-link"><a href="?page={{ contacts.previous_page_number }}">上一页</a></li>
+                        {% endif %}
+                        {% for i in all_pages %}
+                            <li class="page-item"><a class="page-link" href="?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
+                        {% endfor %}
+                        {% if contacts.has_next %}
+                            <a  class="page-link" href="?page={{ contacts.next_page_number }}">下一页</a>
+                        {% endif %}
+                        </ul>
+                    </nav>
+                </div>
+                <!-- comment form -->
+                <form method="post" class="comment-form" id="my_comment_form">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="formCol">
+                            <div class="form-group">
+                                <textarea class="form-control d-block w-100" placeholder="请自觉的遵守互联网相关的法律法规，严禁发布暴力、色情、反动的言论" name="comment"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btnTheme text-uppercase" type="button" data-hover="Send Message" id="comment_btn">
+                        <span class="d-block btnText">发表评论</span>
+                    </button>
+                </form>
+            </article>
+        </div>
+    </div>
+{% endblock %}
+{% block load_js %}
+    <script>
+        {#    在点击收藏按钮的时候爱心和收藏数的变化    #}
+        $("#anime_like").click(function (){
+            $.ajax({
+                url: '{% url 'apis:anime_collection' anime.id  %}',
+                type: 'GET',
+                success: function (data) {
+                    if(data.code == 200){
+                        if(data.msg.status){
+                            {#增加一个收藏数#}
+                            $('#n_collection').text(data.msg.n_collection);
+                            {#  爱心变实心  #}
+                            $('.zi_love').attr('class', 'zi zi_loves');
+                        }else{
+                            {#减少一个收藏数#}
+                            $('#n_collection').text(data.msg.n_collection);
+                            {#  改变爱心成空心  #}
+                            $('.zi_loves').attr('class', 'zi zi_love');
+                        }
+                    }
+                },
+                error: function () {
+                    alert('请先登录')
+                }
+            })
+        });
+        {# 判断在进入页面的时候爱心是实心还是空心 #}
+        $(document).ready(function () {
+            $.ajax({
+                url: '{% url 'apis:anime_judge' anime.id %}',
+                type: 'GET',
+                success: function (data) {
+                    if(data.code == 200){
+                        if(data.msg){
+                            {#  爱心变实心  #}
+                            $('.zi_love').attr('class', 'zi zi_loves');
+                        }else{
+                            {#  改变爱心成空心  #}
+                            $('.zi_love').attr('class', 'zi zi_love');
+                        }
+                    }
+                },
+            })
+        });
+
+        $('#comment_btn').click(function () {
+            $.ajax({
+                url: '{% url "anime:anime_detail" anime.id %}',
+                type: 'POST',
+                dataType: 'json',
+                data: $("#my_comment_form").serialize(),
+                beforeSend:function (xhr, setting) {
+                    xhr.setRequestHeader('X-CSRFToken', '{{ csrf_token }}');
+                },
+                success:function (data) {
+                    if(data.code == 200){
+                        window.location.href='{% url 'anime:anime_detail' anime.id %}';
+                    }else{
+                        alert('登录了才能评论哦')
+                    }
+                    },error: function (data) {
+                    alert('提交失败');
+                }
+
+            })
+        })
+    </script>
+{% endblock %}

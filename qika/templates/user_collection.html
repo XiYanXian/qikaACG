@@ -1,0 +1,68 @@
+{% extends 'user_base.html' %}
+{% load staticfiles %}
+{% block uc_content %}
+    <h1 class="text-capitalize">我的收藏</h1>
+    <hr class="d-block">
+    {% if contacts %}
+        {% for i in contacts.object_list %}
+            {% if forloop.counter|divisibleby:2 %}
+                <article class="prjctDescrColumn hasMbBottom hasOver">
+                    <div class="row align-items-md-center">
+                        <div class="col-12 col-md-6 colImage">
+                            <!-- prjctColumnImageWrap -->
+                            <div class="prjctColumnImageWrap alignleft rounded">
+                                <img class="d-block w-100 rounded" src="{{ i.anime.anime_image.url }}" alt="image description">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 colDescr">
+                            <!-- prjctTextHolder -->
+                            <div class="bg-white hasShadow rounded prjctTextHolder position-relative">
+                                <!-- postTitleTextTag -->
+                                <h3 class="text-capitalize">番剧名: <a href="{% url 'anime:anime_detail' i.anime.id %}">{{ i.anime.anime_name }}</a></h3>
+                                <p>{{ i.anime.anime_intro|safe }}</p>
+                                <a href="{% url 'anime:anime_detail' i.anime.id %}" class="btnMore d-inline-block">更多<i class="icn ei_arrow_right"><span class="sr-only">icon</span></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            {% else %}
+                <article class="prjctDescrColumn hasMbBottom prjctDescrColumnOrderInverse text-md-right hasOver">
+                    <div class="row align-items-md-center">
+                        <div class="col-12 col-md-6 order-md-2 colImage">
+                            <!-- prjctColumnImageWrap -->
+                            <div class="prjctColumnImageWrap alignright rounded">
+                                <img class="d-block w-100 rounded" src="{{ i.anime.anime_image.url }}" alt="image description">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 order-md-1 colDescr">
+                            <!-- prjctTextHolder -->
+                            <div class="bg-white hasShadow rounded prjctTextHolder position-relative">
+                                <!-- postTitleTextTag -->
+                                <h3 class="text-capitalize">番剧名: <a href="{% url 'anime:anime_detail' i.anime.id %}">{{ i.anime.anime_name }}</a></h3>
+                                <p>{{ i.anime.anime_intro|safe }}</p>
+                                <a href="{% url 'anime:anime_detail' i.anime.id %}" class="btnMore d-inline-block">更多<i class="icn ei_arrow_right"><span class="sr-only">icon</span></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            {% endif %}
+        {% endfor %}
+        <div class="container">
+            <nav aria-label="Page navigation">
+                <ul class="pagination pagePagination">
+                {% if contacts.has_previous %}
+                    <li class="page-link"><a href="?page={{ contacts.previous_page_number }}">上一页</a></li>
+                {% endif %}
+                {% for i in all_pages %}
+                    <li class="page-item"><a class="page-link" href="?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
+                {% endfor %}
+                {% if contacts.has_next %}
+                    <a  class="page-link" href="?page={{ contacts.next_page_number }}">下一页</a>
+                {% endif %}
+                </ul>
+            </nav>
+        </div>
+    {% else %}
+        <h3>你还没有收藏任何番剧哦！去找找喜欢的吧~</h3>
+    {% endif %}
+{% endblock %}

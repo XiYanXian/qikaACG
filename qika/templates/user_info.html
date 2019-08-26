@@ -1,0 +1,40 @@
+{% extends 'user_base.html' %}
+{% load staticfiles %}
+{% block uc_content %}
+    <h1 class="text-capitalize">个人信息</h1>
+    <hr class="d-block">
+<form method="post" class="reviewSubmissionForm">
+    {% csrf_token %}
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label class="col-sm-6 col-form-label" for="sex" style="font-size: 22px">性别</label>
+            <select class="form-control" id="sex" style="font-size: 20px" name="sex">
+                <option selected style="font-size: 20px" value="{{ user.sex }}">当前：{% if user.sex == 0 %}男{% elif user.sex == 1 %}女{% elif user.sex == 2 %}保密{% endif %}</option>
+                <option style="font-size: 20px" value="0">男</option>
+                <option style="font-size: 20px" value="1">女</option>
+                <option style="font-size: 20px" value="2">保密</option>
+            </select>
+        </div>
+        <div class="form-group col-md-8">
+            <label class="col-sm-6 col-form-label"  for="my_email" style="font-size: 22px">邮箱</label>
+            <input type="email" class="form-control" id="my_email" value="{{ user.email }}" readonly style="font-size: 20px">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-6 col-form-label" style="font-size: 22px" for="my_intro">个性签名</label>
+        <input type="text"  class="form-control" id="my_intro" style="font-size: 19px" value="{{ user.intro }}" name="intro">
+    </div>
+    {% if code == 400 %}
+        <div class="alert alert-danger" role="alert" id="register_msg" style="display: block">{{ msg }}</div>
+    {% elif code == 200 %}
+        <div class="alert alert-success" role="alert" id="register_msg" style="display: block">{{ msg }}</div>
+    {% else %}
+    {% endif %}
+    <button class="btn btnThemeOutine btnThemeOutineNotWhite text-uppercase" type="submit" data-hover="发送" id="change_info">
+        <span class="d-block btnText">确认修改</span>
+    </button>
+</form>
+    <br/>
+    <br/>
+{% endblock %}
+

@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}标签{% endblock %}
+{% block content %}
+        <!-- pageBdWrapNav -->
+    <nav class="pageBdWrapNav bg-light"  aria-label="breadcrumb">
+        <div class="container">
+            <div class="row align-items-md-center">
+                <div class="col-12 col-md-7">
+                    <!-- breadcrumb -->
+                    <ol class="breadcrumb pageBreadcrumb m-0 p-0 text-capitalize">
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'index' %}">
+                                Home
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">分类</li>
+                    </ol>
+                </div>
+                <div class="col-12 col-md-5 d-none d-md-flex align-items-md-center justify-content-md-end">
+                    <!-- title -->
+                    <strong class="title d-block text-right fontRoboto fwMedium text-capitalize text-dark">分类/查找</strong>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- contentAreaWrap -->
+    <div class="contentAreaWrap contentBlock">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-8 col-lg-9">
+                    <!-- content -->
+                    {% if contacts %}
+                        <section id="content" class="mb-5">
+                            <!-- ltPostColumn -->
+                            {% for i in contacts.object_list %}
+                            <article class="ltPostColumn mbBottomMore hasOver ltPostColumn03 d-md-flex align-items-lg-center">
+                                <!-- alignleft -->
+                                <div class="alignleft imageLarge rounded position-relative flex-shrink-0">
+                                    <img class="rounded d-block w-100" src="{{ i.anime_image_small.url }}" alt="{{ i.anime_name }}">
+                                </div>
+                                <!-- descriptionWrap -->
+                                <div class="descriptionWrap topAdjust">
+    {#                                <em class="posterTagline d-block pt-1">#}
+    {#                                    <span class="d-inline-block">{{ i.release_date }}</span>#}
+    {#                                </em>#}
+                                    <div class="wrap">
+                                        <h3><a href="{% url 'anime:anime_detail' i.id %}">{{ i.anime_name }}</a></h3>
+                                        <p>{{ i.anime_intro|safe }}</p>
+                                        <a href="{% url 'anime:anime_detail' i.id %}" class="btnMore d-inline-block">更多<i class="icn ei_arrow_right"><span class="sr-only">icon</span></i></a>
+                                    </div>
+                                </div>
+                            </article>
+                            {% endfor %}
+                            {#            分页            #}
+                            <nav aria-label="Page navigation">
+                                <!-- pagination -->
+                                <ul class="pagination pagePagination">
+                                    {% if contacts.has_previous %}
+                                        <li class="page-link"><a href="?page={{ contacts.previous_page_number }}&anime_name={{ anime_name }}">上一页</a></li>
+                                    {% endif %}
+                                    {% for i in all_pages %}
+                                        <li class="page-item"><a class="page-link" href="?page={{ forloop.counter }}&anime_name={{ anime_name }}">{{ forloop.counter }}</a></li>
+                                    {% endfor %}
+                                    {% if contacts.has_next %}
+                                        <a  class="page-link" href="?page={{ contacts.next_page_number }}&anime_name={{ anime_name }}">下一页</a>
+                                    {% endif %}
+                                </ul>
+                            </nav>
+                        </section>
+                    {% else %}
+                        <h3>{{ msg }}</h3>
+                    {% endif %}
+                </div>
+                <div class="col-12 col-md-4 col-lg-3">
+                    <!-- sidebar -->
+                    <aside id="sidebar">
+                        <!-- widget search -->
+                        <div class="widget widget_search">
+                            <h3 class="sr-only text-capitalize">查找</h3>
+                            <!-- search form -->
+                            <form action="{% url 'apis:anime_search' %}" class="search-form position-relative" method="get">
+                                <input type="search" class="form-control d-block w-100" placeholder="查找&hellip;" name="anime_name">
+                                <button type="submit" class="ei_icon_search buttonReset"><span class="sr-only">search</span></button>
+                            </form>
+                        </div>
+                        <!-- widget tag cloud -->
+                        <div id="tag_cloud-2" class="widget widget_tag_cloud">
+                            <h3>Tag</h3>
+                            <!-- tagcloud -->
+                            <div class="tagcloud d-flex flex-wrap text-capitalize">
+                                <!-- tagcloudItem -->
+                                {% for i in tags %}
+                                <a href="{% url 'tags:tag_index' i.tag_url %}" class="d-inline-block tagcloudItem rounded">{{ i.tag_name }}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

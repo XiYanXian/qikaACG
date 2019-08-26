@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}2019年七月新番{% endblock %}
+{% block content %}
+    <nav class="pageBdWrapNav bg-light"  aria-label="breadcrumb">
+        <div class="container">
+            <div class="row align-items-md-center">
+                <div class="col-12 col-md-7">
+                    <!-- breadcrumb -->
+                    <ol class="breadcrumb pageBreadcrumb m-0 p-0 text-capitalize">
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'index' %}">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">七月新番</li>
+                    </ol>
+                </div>
+                <div class="col-12 col-md-5 d-none d-md-flex align-items-md-center justify-content-md-end">
+                    <!-- title -->
+                    <strong class="title d-block text-right fontRoboto fwMedium text-capitalize text-dark">七月新番</strong>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="contentBlock pb-1">
+        <div class="container">
+        {% for i in contacts.object_list %}
+            {% if forloop.counter|divisibleby:2 %}
+                <article class="prjctDescrColumn hasMbBottom hasOver">
+                    <div class="row align-items-md-center">
+                        <div class="col-12 col-md-6 colImage">
+                            <!-- prjctColumnImageWrap -->
+                            <div class="prjctColumnImageWrap alignleft rounded">
+                                <img class="d-block w-100 rounded" src="{{ i.anime_image.url }}" alt="image description">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 colDescr">
+                            <!-- prjctTextHolder -->
+                            <div class="bg-white hasShadow rounded prjctTextHolder position-relative">
+                                <!-- postTitleTextTag -->
+                                <strong class="d-block postTitleTextTag font-weight-normal text-capitalize">{{ anime_year }}年 / {{ anime_month }}月</strong>
+                                <h3 class="text-capitalize">番剧名: <a href="{% url 'anime:anime_detail' i.id %}">{{ i.anime_name }}</a></h3>
+                                <p>{{ i.anime_intro|safe }}</p>
+                                <a href="{% url 'anime:anime_detail' i.id %}" class="btnMore d-inline-block">更多<i class="icn ei_arrow_right"><span class="sr-only">icon</span></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            {% else %}
+                <article class="prjctDescrColumn hasMbBottom prjctDescrColumnOrderInverse text-md-right hasOver">
+                    <div class="row align-items-md-center">
+                        <div class="col-12 col-md-6 order-md-2 colImage">
+                            <!-- prjctColumnImageWrap -->
+                            <div class="prjctColumnImageWrap alignright rounded">
+                                <img class="d-block w-100 rounded" src="{{ i.anime_image.url }}" alt="image description">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 order-md-1 colDescr">
+                            <!-- prjctTextHolder -->
+                            <div class="bg-white hasShadow rounded prjctTextHolder position-relative">
+                                <!-- postTitleTextTag -->
+                                <strong class="d-block postTitleTextTag font-weight-normal text-capitalize">{{ anime_year }}年 / {{ anime_month }}月</strong>
+                                <h3 class="text-capitalize">番剧名: <a href="{% url 'anime:anime_detail' i.id %}">{{ i.anime_name }}</a></h3>
+                                <p>{{ i.anime_intro|safe }}</p>
+                                <a href="{% url 'anime:anime_detail' i.id %}" class="btnMore d-inline-block">更多<i class="icn ei_arrow_right"><span class="sr-only">icon</span></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            {% endif %}
+        {% endfor %}
+        </div>
+    <div class="container">
+        <nav aria-label="Page navigation">
+            <ul class="pagination pagePagination">
+            {% if contacts.has_previous %}
+                <li class="page-link"><a href="?page={{ contacts.previous_page_number }}">上一页</a></li>
+            {% endif %}
+            {% for i in all_pages %}
+                <li class="page-item"><a class="page-link" href="?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
+            {% endfor %}
+            {% if contacts.has_next %}
+                <a  class="page-link" href="?page={{ contacts.next_page_number }}">下一页</a>
+            {% endif %}
+            </ul>
+        </nav>
+    </div>
+    </section>
+{% endblock %}

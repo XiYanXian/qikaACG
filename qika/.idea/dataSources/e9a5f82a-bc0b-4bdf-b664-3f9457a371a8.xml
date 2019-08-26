@@ -1,0 +1,1198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="db">
+  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.15">
+    <root id="1">
+      <ServerVersion>3.25.1</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="main">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <collation id="3" parent="1" name="BINARY"/>
+    <collation id="4" parent="1" name="NOCASE"/>
+    <collation id="5" parent="1" name="RTRIM"/>
+    <table id="6" parent="2" name="anime_animelist"/>
+    <table id="7" parent="2" name="anime_animelist_character"/>
+    <table id="8" parent="2" name="anime_animelist_release_date"/>
+    <table id="9" parent="2" name="anime_animelist_staff"/>
+    <table id="10" parent="2" name="anime_animelist_supervision"/>
+    <table id="11" parent="2" name="anime_animelist_tags"/>
+    <table id="12" parent="2" name="anime_attribute"/>
+    <table id="13" parent="2" name="anime_character"/>
+    <table id="14" parent="2" name="anime_comment"/>
+    <table id="15" parent="2" name="anime_staff"/>
+    <table id="16" parent="2" name="anime_supervision"/>
+    <table id="17" parent="2" name="anime_voiceactor"/>
+    <table id="18" parent="2" name="anime_voiceactor_voice_character"/>
+    <table id="19" parent="2" name="auth_group"/>
+    <table id="20" parent="2" name="auth_group_permissions"/>
+    <table id="21" parent="2" name="auth_permission"/>
+    <table id="22" parent="2" name="django_admin_log"/>
+    <table id="23" parent="2" name="django_content_type"/>
+    <table id="24" parent="2" name="django_migrations"/>
+    <table id="25" parent="2" name="django_session"/>
+    <table id="26" parent="2" name="easy_thumbnails_source"/>
+    <table id="27" parent="2" name="easy_thumbnails_thumbnail"/>
+    <table id="28" parent="2" name="easy_thumbnails_thumbnaildimensions"/>
+    <table id="29" parent="2" name="sqlite_master">
+      <System>1</System>
+    </table>
+    <table id="30" parent="2" name="sqlite_sequence">
+      <System>1</System>
+    </table>
+    <table id="31" parent="2" name="tags_releasedate"/>
+    <table id="32" parent="2" name="tags_tags"/>
+    <table id="33" parent="2" name="users_userinfo"/>
+    <table id="34" parent="2" name="users_userinfo_groups"/>
+    <table id="35" parent="2" name="users_userinfo_my_collection"/>
+    <table id="36" parent="2" name="users_userinfo_my_comment"/>
+    <table id="37" parent="2" name="users_userinfo_user_permissions"/>
+    <column id="38" parent="6" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="39" parent="6" name="anime_name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="40" parent="6" name="anime_intro">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="41" parent="6" name="n_point">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="42" parent="6" name="n_collection">
+      <Position>5</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="43" parent="6" name="website">
+      <Position>6</Position>
+      <DataType>varchar(128)|0s</DataType>
+    </column>
+    <column id="44" parent="6" name="anime_image">
+      <Position>7</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="45" parent="6" name="episode_num">
+      <Position>8</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="46" parent="6" name="anime_type">
+      <Position>9</Position>
+      <DataType>varchar(10)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="47" parent="6" name="comment_id">
+      <Position>10</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="48" parent="6" name="sqlite_autoindex_anime_animelist_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>comment_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="49" parent="6">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="50" parent="6">
+      <ColNames>comment_id</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_anime_animelist_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="51" parent="6">
+      <ColNames>comment_id</ColNames>
+      <RefTableName>anime_comment</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="52" parent="7" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="53" parent="7" name="animelist_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="54" parent="7" name="character_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="55" parent="7">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="56" parent="7">
+      <ColNames>animelist_id</ColNames>
+      <RefTableName>anime_animelist</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="57" parent="7">
+      <ColNames>character_id</ColNames>
+      <RefTableName>anime_character</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="58" parent="8" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="59" parent="8" name="animelist_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="60" parent="8" name="releasedate_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="61" parent="8" name="anime_animelist_release_date_animelist_id_releasedate_id_62cd9d9f_uniq">
+      <ColNames>animelist_id
+releasedate_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="62" parent="8" name="anime_animelist_release_date_animelist_id_c2f3663f">
+      <ColNames>animelist_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="63" parent="8" name="anime_animelist_release_date_releasedate_id_0a31e7e8">
+      <ColNames>releasedate_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="64" parent="8">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="65" parent="8">
+      <ColNames>animelist_id</ColNames>
+      <RefTableName>anime_animelist</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="66" parent="8">
+      <ColNames>releasedate_id</ColNames>
+      <RefTableName>tags_releasedate</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="67" parent="9" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="68" parent="9" name="animelist_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="69" parent="9" name="staff_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="70" parent="9" name="anime_animelist_staff_animelist_id_staff_id_e1dff7a9_uniq">
+      <ColNames>animelist_id
+staff_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="71" parent="9" name="anime_animelist_staff_animelist_id_f511853f">
+      <ColNames>animelist_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="72" parent="9" name="anime_animelist_staff_staff_id_bd13f3a7">
+      <ColNames>staff_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="73" parent="9">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="74" parent="9">
+      <ColNames>animelist_id</ColNames>
+      <RefTableName>anime_animelist</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="75" parent="9">
+      <ColNames>staff_id</ColNames>
+      <RefTableName>anime_staff</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="76" parent="10" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="77" parent="10" name="animelist_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="78" parent="10" name="supervision_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="79" parent="10" name="anime_animelist_supervision_animelist_id_supervision_id_8df9df8c_uniq">
+      <ColNames>animelist_id
+supervision_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="80" parent="10" name="anime_animelist_supervision_animelist_id_17baa84d">
+      <ColNames>animelist_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="81" parent="10" name="anime_animelist_supervision_supervision_id_48d5fdec">
+      <ColNames>supervision_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="82" parent="10">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="83" parent="10">
+      <ColNames>animelist_id</ColNames>
+      <RefTableName>anime_animelist</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="84" parent="10">
+      <ColNames>supervision_id</ColNames>
+      <RefTableName>anime_supervision</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="85" parent="11" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="86" parent="11" name="animelist_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="87" parent="11" name="tags_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="88" parent="11" name="anime_animelist_tags_animelist_id_tags_id_febb2881_uniq">
+      <ColNames>animelist_id
+tags_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="89" parent="11" name="anime_animelist_tags_animelist_id_934df609">
+      <ColNames>animelist_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="90" parent="11" name="anime_animelist_tags_tags_id_b5d916bb">
+      <ColNames>tags_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="91" parent="11">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="92" parent="11">
+      <ColNames>animelist_id</ColNames>
+      <RefTableName>anime_animelist</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="93" parent="11">
+      <ColNames>tags_id</ColNames>
+      <RefTableName>tags_tags</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="94" parent="12" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="95" parent="12" name="attr_name">
+      <Position>2</Position>
+      <DataType>varchar(10)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="96" parent="12">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="97" parent="13" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="98" parent="13" name="character_name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="99" parent="13" name="character_image">
+      <Position>3</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="100" parent="13" name="n_like">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="101" parent="13" name="attribute_id">
+      <Position>5</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="102" parent="13" name="anime_character_attribute_id_e76f1695">
+      <ColNames>attribute_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="103" parent="13">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="104" parent="13">
+      <ColNames>attribute_id</ColNames>
+      <RefTableName>anime_attribute</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="105" parent="14" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="106" parent="14" name="content">
+      <Position>2</Position>
+      <DataType>varchar(256)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="107" parent="14" name="comment_time">
+      <Position>3</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="108" parent="14" name="n_like">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="109" parent="14">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="110" parent="15" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="111" parent="15" name="staff_name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="112" parent="15">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="113" parent="16" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="114" parent="16" name="supervision_name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="115" parent="16">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="116" parent="17" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="117" parent="17" name="voice_actor_name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="118" parent="17">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="119" parent="18" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="120" parent="18" name="voiceactor_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="121" parent="18" name="character_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="122" parent="18" name="anime_voiceactor_voice_character_voiceactor_id_character_id_8b7c8a0e_uniq">
+      <ColNames>voiceactor_id
+character_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="123" parent="18" name="anime_voiceactor_voice_character_voiceactor_id_6279a2c2">
+      <ColNames>voiceactor_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="124" parent="18" name="anime_voiceactor_voice_character_character_id_e17a0d2b">
+      <ColNames>character_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="125" parent="18">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="126" parent="18">
+      <ColNames>voiceactor_id</ColNames>
+      <RefTableName>anime_voiceactor</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="127" parent="18">
+      <ColNames>character_id</ColNames>
+      <RefTableName>anime_character</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="128" parent="19" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="129" parent="19" name="name">
+      <Position>2</Position>
+      <DataType>varchar(80)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="130" parent="19" name="sqlite_autoindex_auth_group_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>name</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="131" parent="19">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="132" parent="19">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_auth_group_1</UnderlyingIndexName>
+    </key>
+    <column id="133" parent="20" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="134" parent="20" name="group_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="135" parent="20" name="permission_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="136" parent="20" name="auth_group_permissions_group_id_permission_id_0cd325b0_uniq">
+      <ColNames>group_id
+permission_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="137" parent="20" name="auth_group_permissions_group_id_b120cbf9">
+      <ColNames>group_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="138" parent="20" name="auth_group_permissions_permission_id_84c5c92e">
+      <ColNames>permission_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="139" parent="20">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="140" parent="20">
+      <ColNames>group_id</ColNames>
+      <RefTableName>auth_group</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="141" parent="20">
+      <ColNames>permission_id</ColNames>
+      <RefTableName>auth_permission</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="142" parent="21" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="143" parent="21" name="content_type_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="144" parent="21" name="codename">
+      <Position>3</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="145" parent="21" name="name">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="146" parent="21" name="auth_permission_content_type_id_codename_01ab375a_uniq">
+      <ColNames>content_type_id
+codename</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="147" parent="21" name="auth_permission_content_type_id_2f476e4b">
+      <ColNames>content_type_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="148" parent="21">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="149" parent="21">
+      <ColNames>content_type_id</ColNames>
+      <RefTableName>django_content_type</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="150" parent="22" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="151" parent="22" name="object_id">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="152" parent="22" name="object_repr">
+      <Position>3</Position>
+      <DataType>varchar(200)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="153" parent="22" name="action_flag">
+      <Position>4</Position>
+      <DataType>smallint unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="154" parent="22" name="change_message">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="155" parent="22" name="content_type_id">
+      <Position>6</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="156" parent="22" name="user_id">
+      <Position>7</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="157" parent="22" name="action_time">
+      <Position>8</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="158" parent="22" name="django_admin_log_content_type_id_c4bce8eb">
+      <ColNames>content_type_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="159" parent="22" name="django_admin_log_user_id_c564eba6">
+      <ColNames>user_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="160" parent="22">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="161" parent="22">
+      <ColNames>content_type_id</ColNames>
+      <RefTableName>django_content_type</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="162" parent="22">
+      <ColNames>user_id</ColNames>
+      <RefTableName>users_userinfo</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="163" parent="23" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="164" parent="23" name="app_label">
+      <Position>2</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="165" parent="23" name="model">
+      <Position>3</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="166" parent="23" name="django_content_type_app_label_model_76bd3d3b_uniq">
+      <ColNames>app_label
+model</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="167" parent="23">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="168" parent="24" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="169" parent="24" name="app">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="170" parent="24" name="name">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="171" parent="24" name="applied">
+      <Position>4</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="172" parent="24">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="173" parent="25" name="session_key">
+      <Position>1</Position>
+      <DataType>varchar(40)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="174" parent="25" name="session_data">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="175" parent="25" name="expire_date">
+      <Position>3</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="176" parent="25" name="sqlite_autoindex_django_session_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>session_key</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="177" parent="25" name="django_session_expire_date_a5c62663">
+      <ColNames>expire_date</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="178" parent="25">
+      <ColNames>session_key</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_django_session_1</UnderlyingIndexName>
+    </key>
+    <column id="179" parent="26" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="180" parent="26" name="storage_hash">
+      <Position>2</Position>
+      <DataType>varchar(40)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="181" parent="26" name="name">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="182" parent="26" name="modified">
+      <Position>4</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="183" parent="26" name="easy_thumbnails_source_storage_hash_name_481ce32d_uniq">
+      <ColNames>storage_hash
+name</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="184" parent="26" name="easy_thumbnails_source_storage_hash_946cbcc9">
+      <ColNames>storage_hash</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="185" parent="26" name="easy_thumbnails_source_name_5fe0edc6">
+      <ColNames>name</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="186" parent="26">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="187" parent="27" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="188" parent="27" name="storage_hash">
+      <Position>2</Position>
+      <DataType>varchar(40)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="189" parent="27" name="name">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="190" parent="27" name="modified">
+      <Position>4</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="191" parent="27" name="source_id">
+      <Position>5</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="192" parent="27" name="easy_thumbnails_thumbnail_storage_hash_name_source_id_fb375270_uniq">
+      <ColNames>storage_hash
+name
+source_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="193" parent="27" name="easy_thumbnails_thumbnail_storage_hash_f1435f49">
+      <ColNames>storage_hash</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="194" parent="27" name="easy_thumbnails_thumbnail_name_b5882c31">
+      <ColNames>name</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="195" parent="27" name="easy_thumbnails_thumbnail_source_id_5b57bc77">
+      <ColNames>source_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="196" parent="27">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="197" parent="27">
+      <ColNames>source_id</ColNames>
+      <RefTableName>easy_thumbnails_source</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="198" parent="28" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="199" parent="28" name="thumbnail_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="200" parent="28" name="width">
+      <Position>3</Position>
+      <DataType>integer unsigned|0s</DataType>
+    </column>
+    <column id="201" parent="28" name="height">
+      <Position>4</Position>
+      <DataType>integer unsigned|0s</DataType>
+    </column>
+    <index id="202" parent="28" name="sqlite_autoindex_easy_thumbnails_thumbnaildimensions_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>thumbnail_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="203" parent="28">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="204" parent="28">
+      <ColNames>thumbnail_id</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_easy_thumbnails_thumbnaildimensions_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="205" parent="28">
+      <ColNames>thumbnail_id</ColNames>
+      <RefTableName>easy_thumbnails_thumbnail</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="206" parent="29" name="type">
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="207" parent="29" name="name">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="208" parent="29" name="tbl_name">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="209" parent="29" name="rootpage">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="210" parent="29" name="sql">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="211" parent="30" name="name">
+      <Position>1</Position>
+    </column>
+    <column id="212" parent="30" name="seq">
+      <Position>2</Position>
+    </column>
+    <column id="213" parent="31" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="214" parent="31" name="play_date">
+      <Position>2</Position>
+      <DataType>varchar(10)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="215" parent="31">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="216" parent="32" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="217" parent="32" name="tag_name">
+      <Position>2</Position>
+      <DataType>varchar(10)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="218" parent="32">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="219" parent="33" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="220" parent="33" name="password">
+      <Position>2</Position>
+      <DataType>varchar(128)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="221" parent="33" name="last_login">
+      <Position>3</Position>
+      <DataType>datetime|0s</DataType>
+    </column>
+    <column id="222" parent="33" name="is_superuser">
+      <Position>4</Position>
+      <DataType>bool|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="223" parent="33" name="username">
+      <Position>5</Position>
+      <DataType>varchar(150)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="224" parent="33" name="first_name">
+      <Position>6</Position>
+      <DataType>varchar(30)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="225" parent="33" name="last_name">
+      <Position>7</Position>
+      <DataType>varchar(30)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="226" parent="33" name="is_staff">
+      <Position>8</Position>
+      <DataType>bool|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="227" parent="33" name="is_active">
+      <Position>9</Position>
+      <DataType>bool|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="228" parent="33" name="date_joined">
+      <Position>10</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="229" parent="33" name="nickname">
+      <Position>11</Position>
+      <DataType>varchar(12)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="230" parent="33" name="email">
+      <Position>12</Position>
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="231" parent="33" name="intro">
+      <Position>13</Position>
+      <DataType>varchar(256)|0s</DataType>
+    </column>
+    <column id="232" parent="33" name="sex">
+      <Position>14</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="233" parent="33" name="icon">
+      <Position>15</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="234" parent="33" name="encrypted">
+      <Position>16</Position>
+      <DataType>varchar(10)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="235" parent="33" name="sqlite_autoindex_users_userinfo_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>username</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="236" parent="33">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="237" parent="33">
+      <ColNames>username</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_users_userinfo_1</UnderlyingIndexName>
+    </key>
+    <column id="238" parent="34" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="239" parent="34" name="userinfo_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="240" parent="34" name="group_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="241" parent="34" name="users_userinfo_groups_userinfo_id_group_id_cea24743_uniq">
+      <ColNames>userinfo_id
+group_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="242" parent="34" name="users_userinfo_groups_userinfo_id_0564c3d4">
+      <ColNames>userinfo_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="243" parent="34" name="users_userinfo_groups_group_id_8666291f">
+      <ColNames>group_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="244" parent="34">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="245" parent="34">
+      <ColNames>userinfo_id</ColNames>
+      <RefTableName>users_userinfo</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="246" parent="34">
+      <ColNames>group_id</ColNames>
+      <RefTableName>auth_group</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="247" parent="35" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="248" parent="35" name="userinfo_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="249" parent="35" name="animelist_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="250" parent="35" name="users_userinfo_my_collection_userinfo_id_animelist_id_95eb0c4e_uniq">
+      <ColNames>userinfo_id
+animelist_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="251" parent="35" name="users_userinfo_my_collection_userinfo_id_5b58bab1">
+      <ColNames>userinfo_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="252" parent="35" name="users_userinfo_my_collection_animelist_id_6e6a4bbe">
+      <ColNames>animelist_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="253" parent="35">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="254" parent="35">
+      <ColNames>userinfo_id</ColNames>
+      <RefTableName>users_userinfo</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="255" parent="35">
+      <ColNames>animelist_id</ColNames>
+      <RefTableName>anime_animelist</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="256" parent="36" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="257" parent="36" name="userinfo_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="258" parent="36" name="comment_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="259" parent="36" name="users_userinfo_my_comment_userinfo_id_comment_id_f3beb713_uniq">
+      <ColNames>userinfo_id
+comment_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="260" parent="36" name="users_userinfo_my_comment_userinfo_id_33a5bfca">
+      <ColNames>userinfo_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="261" parent="36" name="users_userinfo_my_comment_comment_id_4ea4542e">
+      <ColNames>comment_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="262" parent="36">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="263" parent="36">
+      <ColNames>userinfo_id</ColNames>
+      <RefTableName>users_userinfo</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="264" parent="36">
+      <ColNames>comment_id</ColNames>
+      <RefTableName>anime_comment</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="265" parent="37" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="266" parent="37" name="userinfo_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="267" parent="37" name="permission_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="268" parent="37" name="users_userinfo_user_permissions_userinfo_id_permission_id_65ffd654_uniq">
+      <ColNames>userinfo_id
+permission_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="269" parent="37" name="users_userinfo_user_permissions_userinfo_id_255c933e">
+      <ColNames>userinfo_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="270" parent="37" name="users_userinfo_user_permissions_permission_id_c4a43efe">
+      <ColNames>permission_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="271" parent="37">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="272" parent="37">
+      <ColNames>userinfo_id</ColNames>
+      <RefTableName>users_userinfo</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="273" parent="37">
+      <ColNames>permission_id</ColNames>
+      <RefTableName>auth_permission</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+  </database-model>
+</dataSource>
