@@ -5,53 +5,53 @@
 
 这是主页
 
-![index1](images\index1.png)
+![index1](https://github.com/XiYanXian/qikaACG/edit/master\images\index1.png)
 
 ![index2](images\index2.png)
 
 这是番剧的季度详情
 
-![anime_quater2](images\anime_quater2.png)
+![anime_quater2](https://github.com/XiYanXian/qikaACG/edit/master\images\anime_quater2.png)
 
-![anime_queter1](images\anime_queter1.png)
+![anime_queter1](https://github.com/XiYanXian/qikaACG/edit/master\images\anime_queter1.png)
 
 这是番剧详情页
 
-![anime_detail1](images\anime_detail1.png)
+![anime_detail1](https://github.com/XiYanXian/qikaACG/edit/master\images\anime_detail1.png)
 
-![anime_detail2](images\anime_detail2.png)
+![anime_detail2](https://github.com/XiYanXian/qikaACG/edit/master\images\anime_detail2.png)
 
-![anime_detail3](images\anime_detail3.png)
+![anime_detail3](https://github.com/XiYanXian/qikaACG/edit/master\images\anime_detail3.png)
 
 这是番剧分类和搜索页面
 
-![anime_tags](images\anime_tags.png)
+![anime_tags](https://github.com/XiYanXian/qikaACG/edit/master\images\anime_tags.png)
 
 这是注册页面
 
-![register](images\register.png)
+![register](https://github.com/XiYanXian/qikaACG/edit/master\images\register.png)
 
 这是登录页面
 
-![login](images\login.png)
+![login](https://github.com/XiYanXian/qikaACG/edit/master\images\login.png)
 
 这是忘记密码页面
 
-![forget_password](images\forget_password.png)
+![forget_password](https://github.com/XiYanXian/qikaACG/edit/master\images\forget_password.png)
 
 这是个人中心页面
 
-![user_info](images\user_info.png)
+![user_info](https://github.com/XiYanXian/qikaACG/edit/master\images\user_info.png)
 
 这是我的收藏页面
 
-![user_collection](images\user_collection.png)
+![user_collection](https://github.com/XiYanXian/qikaACG/edit/master\images\user_collection.png)
 
 这是我的评论页面
 
-![user_comment](images\user_comment.png)
+![user_comment](https://github.com/XiYanXian/qikaACG/edit/master\images\user_comment.png)
 
 这是修改密码页面
 
-![change_pwd](images\change_pwd.png)
+![change_pwd](https://github.com/XiYanXian/qikaACG/edit/master\images\change_pwd.png)
 
