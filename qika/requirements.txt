@@ -1,6 +1,6 @@
 certifi==2019.6.16
 chardet==3.0.4
-Django==1.11.20
+Django==2.2.24
 django-ckeditor==5.7.1
 django-js-asset==1.2.2
 django-redis==4.10.0
